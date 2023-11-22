@@ -3,11 +3,11 @@ schema:
   file: schema.graphql
 dataSources:
   - kind: ethereum
-    name: eNear
+    name: token
     network: mainnet
     source:
       address: "0x85F17Cf997934a597031b2E18a9aB6ebD4B9f6a4"
-      abi: eNear
+      abi: token
       startBlock: 12475891
     mapping:
       kind: ethereum/events
@@ -20,8 +20,8 @@ dataSources:
         - Transfer
         - TransferToNearInitiated
       abis:
-        - name: eNear
-          file: eNear/abis/eNear.json
+        - name: token
+          file: token/abis/token.json
       eventHandlers:
         - event: Approval(indexed address,indexed address,uint256)
           handler: handleApproval
@@ -33,4 +33,27 @@ dataSources:
           handler: handleTransfer
         - event: TransferToNearInitiated(indexed address,uint256,string)
           handler: handleTransferToNearInitiated
-      file: eNear/eNear.wasm
+      file: token/token.wasm
+  - kind: ethereum
+    name: ERC20Locker
+    network: mainnet
+    source:
+      address: "0x23ddd3e3692d1861ed57ede224608875809e127f"
+      abi: ERC20Locker
+      startBlock: 12044301
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Locked
+        - Unlocked
+      abis:
+        - name: ERC20Locker
+          file: ERC20Locker/abis/ERC20Locker.json
+      eventHandlers:
+        - event: Locked(indexed address,indexed address,uint256,string)
+          handler: handleLocked
+        - event: Unlocked(uint128,address)
+          handler: handleUnlocked
+      file: ERC20Locker/ERC20Locker.wasm

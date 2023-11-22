@@ -44,3 +44,22 @@ type TransferToNearInitiated @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+type Locked @entity(immutable: true) {
+  id: Bytes!
+  token: Bytes! # address
+  sender: Bytes! # address
+  amount: BigInt! # uint256
+  accountId: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Unlocked @entity(immutable: true) {
+  id: Bytes!
+  amount: BigInt! # uint128
+  recipient: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

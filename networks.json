@@ -1,8 +1,11 @@
 {
   "mainnet": {
-    "eNear": {
+    "token": {
       "address": "0x85F17Cf997934a597031b2E18a9aB6ebD4B9f6a4",
       "startBlock": 12475891
+    },
+    "ERC20Locker": {
+      "address": "0x23ddd3e3692d1861ed57ede224608875809e127f"
     }
   }
 }
